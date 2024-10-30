@@ -18,6 +18,7 @@ INSERT INTO test VALUES (1), (2), (3);
 EXPLAIN ANALYZE SELECT * FROM test;
 
 
+--- 
 
 ## Building
 ### Managing dependencies
