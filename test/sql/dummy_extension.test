@@ -1,0 +1,23 @@
+# name: test/sql/dummy_extension.test
+# description: test dummy_extension extension
+# group: [dummy_extension]
+
+# Before we load the extension, this will fail
+statement error
+SELECT dummy_extension('Sam');
+----
+Catalog Error: Scalar Function with name dummy_extension does not exist!
+
+# Require statement will ensure this test is run with this extension loaded
+require dummy_extension
+
+# Confirm the extension works
+query I
+SELECT dummy_extension('Sam');
+----
+DummyExtension Sam 🐥
+
+query I
+SELECT dummy_extension_openssl_version('Michael') ILIKE 'DummyExtension Michael, my linked OpenSSL version is OpenSSL%';
+----
+true
