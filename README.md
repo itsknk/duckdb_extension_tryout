@@ -4,7 +4,19 @@ This repository is based on https://github.com/duckdb/extension-template, check 
 
 ---
 
-This extension, Dummy_extension, allow you to ... <extension_goal>.
+This is a custom extension that injects a dummy operator into the physical query plan.
+
+## Features
+- Injects a dummy operator wrapping table scan operations.
+- Demonstrates how to modify physical plans in DuckDB.
+
+## Usage
+```bash
+LOAD 'dummy_extension.duckdb_extension';
+CREATE TABLE test (id INTEGER);
+INSERT INTO test VALUES (1), (2), (3);
+EXPLAIN ANALYZE SELECT * FROM test;
+
 
 
 ## Building
